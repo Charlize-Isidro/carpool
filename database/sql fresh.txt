@@ -1,0 +1,125 @@
+mysql -u root
+
+CREATE DATABASE carpool_app;
+USE carpool_app;
+
+CREATE TABLE users (
+  user_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  user_type varchar(10),
+  user_fname varchar(255) NOT NULL,
+  user_mname varchar(255),
+  user_lname varchar(255) NOT NULL,
+  user_contact_no char(13),
+  user_email varchar(255) NOT NULL,
+  user_password varchar(255) NOT NULL,
+  user_barangay varchar(255) NOT NULL,
+  user_city varchar(255) NOT NULL,
+  user_province varchar(255) NOT NULL,
+  user_verified_at timestamp NULL DEFAULT NULL,
+  user_created_at timestamp NOT NULL DEFAULT current_timestamp
+);
+
+CREATE TABLE drivers (
+  driv_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  user_id int(11) NOT NULL,
+  driv_license_no char(13) NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+CREATE TABLE cars (
+  car_id int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  driv_id int(11) NOT NULL,
+  car_plate_no char(8) NOT NULL,
+  car_model varchar(20) NOT NULL,
+  car_color varchar(20) NOT NULL,
+  car_brand varchar(20) NOT NULL,
+  car_created_at timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY (driv_id) REFERENCES Drivers(driv_id)
+);
+
+CREATE TABLE rates (
+  rate_id int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  rate_front float(9,2) NOT NULL,
+  rate_left float(9,2) NOT NULL,
+  rate_right float(9,2) NOT NULL,
+  rate_middle float(9,2) NOT NULL,
+  rate_created_at timestamp NOT NULL DEFAULT current_timestamp()
+);
+
+CREATE TABLE trips (
+  trip_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  car_id int(11) NOT NULL,
+  rate_id int(11) NOT NULL,
+  trip_departure_datetime timestamp NOT NULL DEFAULT current_timestamp(),
+  trip_start_barangay varchar(255) NOT NULL,
+  trip_start_city varchar(255) NOT NULL,
+  trip_start_province varchar(255) NOT NULL,
+  trip_end_barangay varchar(255) NOT NULL,
+  trip_end_city varchar(255) NOT NULL,
+  trip_end_province varchar(255) NOT NULL,
+  trip_status varchar(20) NOT NULL,
+  trip_created_at timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY (car_id) REFERENCES Cars(car_id),
+  FOREIGN KEY (rate_id) REFERENCES Rates(rate_id)
+);
+
+CREATE TABLE passengers (
+  pass_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  user_id int(11) NOT NULL,
+  pass_type varchar(20),
+  pass_id_type varchar(20),
+  pass_id_number varchar(20),
+  pass_id_confirmed_at timestamp NULL DEFAULT NULL,
+  FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+CREATE TABLE bookings (
+  book_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  trip_id int(11) NOT NULL,
+  pass_id int(11) NOT NULL,
+  book_seat_location varchar(20) NOT NULL,
+  book_pickup_barangay varchar(255) NOT NULL,
+  book_pickup_city varchar(255) NOT NULL,
+  book_pickup_province varchar(255) NOT NULL,
+  book_pickup_description varchar(255) DEFAULT NULL,
+  book_status varchar(20) NOT NULL,
+  book_driver_confirmed_at timestamp NULL DEFAULT NULL,
+  book_passenger_confirmed_at timestamp NULL DEFAULT NULL,
+  book_created_at timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY (trip_id) REFERENCES Trips(trip_id),
+  FOREIGN KEY (pass_id) REFERENCES Passengers(pass_id)
+);
+
+CREATE TABLE feedbacks (
+  fdb_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  book_id int(11) NOT NULL,
+  fdb_driver varchar(255) NOT NULL,
+  fdb_driver_rating char(5) NOT NULL,
+  fdb_passenger varchar(255) NOT NULL,
+  fdb_passenger_rating char(5) NOT NULL,
+  fdb_driver_created_at timestamp NULL DEFAULT NULL,
+  fdb_passenger_created_at timestamp NULL DEFAULT NULL,
+  FOREIGN KEY (book_id) REFERENCES Bookings(book_id)
+);
+
+CREATE TABLE payments (
+  payment_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  book_id int(11) NOT NULL,
+  payment_amount float(9,2) NOT NULL,
+  payment_status varchar(8) NOT NULL,
+  payment_confirmed_at timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY (book_id) REFERENCES Bookings(book_id)
+);
+
+CREATE TABLE ewallets (
+  wallet_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  user_id int(11) NOT NULL,
+  payment_id int(11),
+  wallet_type varchar(20) NOT NULL,
+  wallet_amount float(9,2) NOT NULL,
+  wallet_status varchar(20) NOT NULL,
+  wallet_reference varchar(50) NOT NULL,
+  wallet_transaction_created_at timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY (user_id) REFERENCES Users(user_id),
+  FOREIGN KEY (payment_id) REFERENCES Payments(payment_id)
+);

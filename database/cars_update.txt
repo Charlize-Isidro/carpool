@@ -1,0 +1,28 @@
+
+
+
+
+CREATE TABLE cars (
+  car_id int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  driv_id int(11) NOT NULL,
+  car_field_office varchar(256) NOT NULL,
+  car_office_code varchar(256) NOT NULL,
+  car_receipt_no varchar(256) NOT NULL,
+  car_tin_no varchar(256),
+  car_plate_no char(8) NOT NULL,
+  car_model varchar(20) NOT NULL,
+  car_color varchar(20) NOT NULL,
+  car_brand varchar(20) NOT NULL,
+  car_classification varchar(256) NOT NULL,
+  car_engine_no varchar(256) NOT NULL,
+  car_chassis_no varchar(256) NOT NULL,
+  car_year varchar(256) NOT NULL,
+  car_type varchar(256) NOT NULL,
+  car_category varchar(256) NOT NULL,
+  car_fuel varchar(256) NOT NULL,
+  car_rejected boolean NOT NULL,
+  car_renewal_date timestamp NOT NULL,
+  car_confirmed_at timestamp NOT NULL,
+  car_created_at timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY (driv_id) REFERENCES Drivers(driv_id)
+);
