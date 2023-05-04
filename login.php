@@ -16,6 +16,7 @@ if (!empty($_SESSION['message'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
     <title>Login Page </title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -37,9 +38,9 @@ if (!empty($_SESSION['message'])) {
             unset($_SESSION['bg']);
         endif ?>
 
-        <h1> Carpool </h1>
-
-        <hr>
+        
+    <div class="login-box">
+        <h2>Login</h2>
         <form method="POST" action="config/login.php">
             <div class="mb-3">
                 <label for="inputEmail" class="form-label">Email address</label>
@@ -48,10 +49,28 @@ if (!empty($_SESSION['message'])) {
             <div class="mb-3">
                 <label for="inputPassword" class="form-label">Password</label>
                 <input minlength="8" required name="password" type="password" class="form-control" id="inputPassword">
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-            <a href="register.html" class="btn btn-secondary">Register</a>
+             </div>
+             <button type="submit" class="btn btn-primary">Login</button>
+             <a href="register.html" class="btn btn-secondary">Register</a>
         </form>
+
+        </div>
+        <!-- 
+  
+  <form>
+    <div class="user-box">
+      <input type="text" name="" required="">
+      <label>Username</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="" required="">
+      <label>Password</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    <a href="register.html" class="btn btn-secondary">Register</a>
+    
+  </form>
+    </div> -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
