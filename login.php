@@ -51,7 +51,7 @@ if (!empty($_SESSION['message'])) {
                 <input minlength="8" required name="password" type="password" class="form-control" id="inputPassword">
              </div>
              <button type="submit" class="btn btn-primary">Login</button>
-             <a href="register.html" class="btn btn-secondary">Register</a>
+             <a href="registerr.html" class="btn btn-secondary">Register</a>
         </form>
 
         </div>
