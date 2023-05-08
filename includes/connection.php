@@ -1,10 +1,10 @@
 <?php
 
-$server = "localhost";
-$server_username = "root";
-$server_password = "";
-$server_database = "carpool1";
-$home = "http://localhost/carpool1";
+// $server = "localhost";
+// $server_username = "root";
+// $server_password = "";
+// $server_database = "carpool1";
+// $home = "http://localhost/carpool1";
 
 $server = "localhost";
 $server_username = "u235219407_charurot";
