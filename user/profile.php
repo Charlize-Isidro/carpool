@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
         // Check if the Account is Verified or Not
         if (is_null($row['user_verified_at'])) {
             $_SESSION['bg'] =  "warning";
-            $_SESSION['message'] = "Your account is not yet verified. Check your email to verify account!";
+            $_SESSION['message'] = "Your account has not yet been validated. Check your email to confirm your account!";
             header('Location: ' . $home . '/login.php');
             return;
         }

@@ -42,7 +42,7 @@ if (!empty($_SESSION['message'])) {
 
             <h1 class="mb-3"> Car Registration </h1>
             <hr>
-
+<!-- 
             <h4> Office Details </h4>
             <div class="row">
                 <div class="mb-3 col-8">
@@ -64,7 +64,7 @@ if (!empty($_SESSION['message'])) {
                     <label for="tin_no" class="form-label">TIN<span class="text-danger">*</span></label>
                     <input type="text" placeholder="000-000-000-000" minlength="15" maxlength="15" name="tin_no" id="tin_no" class="form-control" required>
                 </div>
-            </div>
+            </div> -->
 
 
 
@@ -138,17 +138,17 @@ if (!empty($_SESSION['message'])) {
             </div>
 
             <div class="row">
-                <div class="mb-3 col-4">
-                    <label for="car_category" class="form-label">Car Category <span class="text-danger">*</span></label>
+                <!-- <div class="mb-3 col-4"> -->
+                    <!-- <label for="car_category" class="form-label">Car Category <span class="text-danger">*</span></label>
                     <select class="form-select" name="car_category" id="car_category" aria-label="Default select example" required>
-                        <option value="Passenger Car" selected> Passenger Car </option>
-                        <option value="Trucks"> Trucks </option>
-                        <option value="Buses"> Buses </option>
-                        <option value="Trailers"> Trailers </option>
-                        <option value="Motorcycles"> Motorcycles </option>
-                    </select>
+                        <!-- <option value="Passenger Car" selected> Passenger Car </option> -->
+                        <!-- <option value="Trucks"> Trucks </option> -->
+                        <!-- <option value="Buses"> Buses </option> -->
+                        <!-- <option value="Trailers"> Trailers </option> -->
+                        <!-- <option value="Motorcycles"> Motorcycles </option> -->
+                    <!-- </select> -->
                     
-                </div>
+                <!-- </div>  -->
 
                 <div class="mb-3 col-4">
                     <label for="car_fuel" class="form-label">Car Fuel <span class="text-danger">*</span></label>

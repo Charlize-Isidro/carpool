@@ -4,9 +4,9 @@ include '../includes/connection.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'phpmailer/src/Exception.php';
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
+require '../config/phpmailer/src/Exception.php';
+require '../config/phpmailer/src/PHPMailer.php';
+require '../config/phpmailer/src/SMTP.php';
 
 $now = new DateTime();
 $now->setTimezone(new DateTimeZone('Asia/Manila'));

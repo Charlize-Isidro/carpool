@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Mailling Part
     $name = $fname . " " . $lname;
-    $subject = "Sabay App | User Verification for " . $name;
+    $subject = "Carpool | User Verification for " . $name;
     $link = $home . "/config/verify.php?user=" . $email . "";
     $message = ' 
     <!DOCTYPE html>
@@ -87,18 +87,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </style>
     </head>
     <body>
-        <b> Sabay App </b>
+        <b> Carpool </b>
         <hr>
-        <p> Hi, <strong>' . $name . '!</strong></p>
-        <p> You only have one more step to use the app. Please click the link below to finalize your Carpool App
-            Registration.
+        <p> Hallu, <strong>' . $name . '!</strong></p>
+        <p> Please confirm your email address by tapping the link below.
             <br><br>
-            <a id="verify" href="' . $link . '"> Verify Email Address </a>
+            <a id="verify" href="' . $link . '"> Confirm Email Address </a>
             <br><br>
-            If you have are having trouble verifying, email us at carpool@jeyymsantos.com. Did not sign up for an account? You may kindly ignore this email.
-            <br><br>
-            Riding you safe, <br>
-            <b>Sabay App, Your Carpool Buddy 😊 </b>
+        
         </p>
     </body>
     </html>
@@ -106,14 +102,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $mail = new PHPMailer(true);
     $mail->isSMTP();
-    $mail->Host = 'smtp.hostinger.com';
+    $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = 'true';
-    $mail->Username = 'sabay_app@jeyymsantos.com';
-    $mail->Password = 'Jeyym@15';
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = '587';
+    $mail->Username = 'charlize.isidro@gmail.com';
+    $mail->Password = 'fbuqwhpdlpevpnzq';
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port = '465';
 
-    $mail->setFrom('sabay_app@jeyymsantos.com', 'Sabay App');
+    $mail->setFrom('charlize.isidro@gmail.com', 'Carpool');
     $mail->addAddress($email);
     $mail->isHTML(true);
     $mail->Subject = $subject;
