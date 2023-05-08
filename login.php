@@ -39,7 +39,7 @@ if (!empty($_SESSION['message'])) {
         endif ?>
 
         
-    <div class="login-box">
+    <div class="login-box" style = "color: white">
         <h2>Login</h2>
         <form method="POST" action="config/login.php">
             <div class="mb-3">
